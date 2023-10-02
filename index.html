@@ -44,7 +44,7 @@
 
          L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
            attribution: 'Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL.',
-           maxZoom: 11,
+           maxZoom: 16,
            minZoom: 5
          }).addTo(map);
 		 
@@ -70,12 +70,10 @@
 			}
 			
 			function highlightFeature(e) {
-				// Get access to the feature that was hovered through e.target
+				
 				var feature = e.target;
 
-				// Set a thick grey border on the feature as mouseover effect
-				// Adjust the values below to change the highlighting styles of features on mouseover
-				// Check out https://leafletjs.com/reference-1.3.4.html#path for more options for changing style
+				
 				feature.setStyle({
 					weight: 7,
 					color: '#fff',
@@ -107,7 +105,7 @@
 				onEachFeature: onEachFeature
 			}).bindPopup(function (layer){
 				return layer.feature.properties.community
-					   + '<p style="color:orange">' + layer.feature.properties.PopDen.toString() + ' people/square km </p>';       
+					   + '<p style="color:orange">' + layer.feature.properties.PopDen.toString(2). + ' people/square km </p>';       
 			}).addTo(map);
 
 			var legend = L.control({position: 'bottomright'}); // Try the other three corners if you like.
@@ -117,7 +115,7 @@
 					var div = L.DomUtil.create('div', 'legend'),
 						grades = [0, 369, 1847, 3852, 5368, 8257] // The break values to define the intervals of population, note we begin from 0 here
 
-					div.innerHTML = '<b>Population Density <br> 2011 <br></b>'; // The legend title (HTML-based), in this case it's Population Density 2011
+					div.innerHTML = '<b>Population Density<br></b>'; // The legend title (HTML-based), in this case it's Population Density 2011
 
 					for (var i = 0; i < grades.length; i++) {
 						div.innerHTML +=
