@@ -105,7 +105,7 @@
 				onEachFeature: onEachFeature
 			}).bindPopup(function (layer){
 				return layer.feature.properties.community
-					   + '<p style="color:orange">' + layer.feature.properties.PopDen.toString().toFixed(2) + ' people/square km </p>';       
+					   + '<p style="color:orange">' + layer.feature.properties.PopDen.toString() + ' people/square km </p>';       
 			}).addTo(map);
 
 			var legend = L.control({position: 'bottomright'}); // Try the other three corners if you like.
